@@ -1,0 +1,25 @@
+name: Validate Claude plugin
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate JSON and synchronized versions
+        run: |
+          jq -e . .claude-plugin/plugin.json .claude-plugin/marketplace.json .mcp.json >/dev/null
+          plugin_version="$(jq -r '.version' .claude-plugin/plugin.json)"
+          marketplace_version="$(jq -r '.plugins[] | select(.name == "hrg-flowfield") | .version' .claude-plugin/marketplace.json)"
+          test "$plugin_version" = "$marketplace_version"
+      - name: Test installer
+        run: sh tests/test-install-claude-code.sh
+      - name: Test release packaging
+        run: |
+          version="$(jq -r '.version' .claude-plugin/plugin.json)"
+          scripts/package-release.sh "$version" "$RUNNER_TEMP/dist"

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "hrg-flowfield": {
+      "type": "http",
+      "url": "https://hrg.flowfield.inc/mcp"
+    }
+  }
+}
