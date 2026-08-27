@@ -25,6 +25,7 @@ jobs:
       - name: Test release packaging
         run: |
           version="$(jq -r '.version' .claude-plugin/plugin.json)"
+          mkdir -p "$RUNNER_TEMP/dist"
           scripts/package-release.sh "$version" "$RUNNER_TEMP/dist" >"$RUNNER_TEMP/dist/SHA256SUMS"
           cd "$RUNNER_TEMP/dist"
           shasum -a 256 -c SHA256SUMS
