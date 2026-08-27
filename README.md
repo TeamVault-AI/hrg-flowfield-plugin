@@ -30,7 +30,7 @@ installed by default, or required.
 Run:
 
 ```bash
-curl --proto '=https' --tlsv1.2 -fsS https://raw.githubusercontent.com/TeamVault-AI/hrg-flowfield-plugin/v0.1.0/install-claude-code.sh | sh
+curl --proto '=https' --tlsv1.2 -fsS https://raw.githubusercontent.com/TeamVault-AI/hrg-flowfield-plugin/v0.1.1/install-claude-code.sh | sh
 ```
 
 Then start a new Claude Code session or run `/reload-plugins`.
