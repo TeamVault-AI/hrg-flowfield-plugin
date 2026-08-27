@@ -25,7 +25,9 @@ jobs:
       - name: Test release packaging
         run: |
           version="$(jq -r '.version' .claude-plugin/plugin.json)"
-          scripts/package-release.sh "$version" "$RUNNER_TEMP/dist"
+          scripts/package-release.sh "$version" "$RUNNER_TEMP/dist" >"$RUNNER_TEMP/dist/SHA256SUMS"
+          cd "$RUNNER_TEMP/dist"
+          shasum -a 256 -c SHA256SUMS
       - name: Publish versioned fallback release
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         env:

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.3
+
+- Emit portable release checksums using asset filenames rather than CI-runner
+  absolute paths.
+- Verify `SHA256SUMS` during release-package validation.
+
 ## 0.1.2
 
 - Made the private `flowfieldai/flowfield` monorepo and its

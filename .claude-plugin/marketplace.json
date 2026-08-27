@@ -8,7 +8,7 @@
     {
       "name": "hrg-flowfield",
       "source": "./",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "description": "Search and read Honey Rock Group knowledge through the authenticated Flowfield connector.",
       "author": {
         "name": "Flowfield"

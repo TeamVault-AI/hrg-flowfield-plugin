@@ -29,4 +29,7 @@ rm -f "$PLUGIN_ASSET" "$ZIP_ASSET"
 )
 cp "$PLUGIN_ASSET" "$ZIP_ASSET"
 
-shasum -a 256 "$PLUGIN_ASSET" "$ZIP_ASSET"
+(
+  cd "$OUTPUT_DIR"
+  shasum -a 256 "$(basename "$PLUGIN_ASSET")" "$(basename "$ZIP_ASSET")"
+)
