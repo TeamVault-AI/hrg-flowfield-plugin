@@ -2,7 +2,7 @@
 set -eu
 
 MARKETPLACE_NAME="flowfield-hrg"
-MARKETPLACE_SOURCE="${FLOWFIELD_MARKETPLACE_SOURCE:-TeamVault-AI/hrg-flowfield-plugin}"
+MARKETPLACE_SOURCE="${FLOWFIELD_MARKETPLACE_SOURCE:-flowfieldai/hrg-flowfield-plugin}"
 PLUGIN_ID="hrg-flowfield@flowfield-hrg"
 MCP_ID="plugin:hrg-flowfield:hrg-flowfield"
 CLAUDE_BIN="${CLAUDE_BIN:-claude}"

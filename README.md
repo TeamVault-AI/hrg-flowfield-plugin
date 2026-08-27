@@ -16,7 +16,7 @@ The connector intentionally exposes exactly two read-only tools:
 
 1. Open **Customize** → **Plugins**.
 2. Choose **Add marketplace** → **Add from a repository**.
-3. Enter `TeamVault-AI/hrg-flowfield-plugin`.
+3. Enter `flowfieldai/hrg-flowfield-plugin`.
 4. Install **HRG Flowfield**.
 5. Open its connector, choose **Connect**, and sign in with your Honey Rock
    Group Microsoft account.
@@ -30,7 +30,7 @@ installed by default, or required.
 Run:
 
 ```bash
-curl --proto '=https' --tlsv1.2 -fsS https://raw.githubusercontent.com/TeamVault-AI/hrg-flowfield-plugin/v0.1.1/install-claude-code.sh | sh
+curl --proto '=https' --tlsv1.2 -fsS https://raw.githubusercontent.com/flowfieldai/hrg-flowfield-plugin/v0.1.2/install-claude-code.sh | sh
 ```
 
 Then start a new Claude Code session or run `/reload-plugins`.

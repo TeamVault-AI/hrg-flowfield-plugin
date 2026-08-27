@@ -1,8 +1,13 @@
 # Releasing HRG Flowfield
 
+The canonical source is `plugins/hrg-flowfield` in the private
+`flowfieldai/flowfield` repository. The public
+`flowfieldai/hrg-flowfield-plugin` repository is a generated distribution
+mirror and must not be edited directly.
+
 Claude marketplace updates are version-driven. Publish every plugin-owned
-change through a merged pull request; do not use a direct push to `main` as the
-release mechanism.
+change through a merged pull request in the canonical repository; do not use a
+direct push to either repository as the release mechanism.
 
 1. Create a release branch.
 2. Make the plugin or skill change.
@@ -17,15 +22,13 @@ release mechanism.
    claude plugin validate .
    ```
 
-5. Open and merge the pull request.
-6. Tag the merged commit `v<version>`.
-7. Build and publish the fallback packages:
-
-   ```bash
-   scripts/package-release.sh <version> dist
-   gh release create v<version> dist/* --title "HRG Flowfield v<version>"
-   ```
-
+5. Open and merge the canonical pull request.
+6. The canonical publish workflow validates and mirrors the plugin to the
+   public repository using the encrypted repository secret
+   `HRG_FLOWFIELD_PLUGIN_PUBLISH_TOKEN`. Rotate that credential without
+   changing plugin source when its GitHub authorization changes.
+7. The public mirror workflow creates tag `v<version>` plus `.plugin`, `.zip`,
+   and checksum release assets when that version does not already exist.
 8. In Claude, update the `flowfield-hrg` marketplace and then update HRG
    Flowfield. Begin a new session and verify that the connector still exposes
    exactly `hybrid_search` and `read_document`.

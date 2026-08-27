@@ -1,5 +1,8 @@
 name: Validate Claude plugin
 
+permissions:
+  contents: write
+
 on:
   pull_request:
   push:
@@ -23,3 +26,23 @@ jobs:
         run: |
           version="$(jq -r '.version' .claude-plugin/plugin.json)"
           scripts/package-release.sh "$version" "$RUNNER_TEMP/dist"
+      - name: Publish versioned fallback release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ secrets.HRG_FLOWFIELD_PLUGIN_PUBLISH_TOKEN }}
+        run: |
+          test -n "$GH_TOKEN"
+          version="$(jq -r '.version' .claude-plugin/plugin.json)"
+          tag="v$version"
+          if git ls-remote --exit-code --tags origin "refs/tags/$tag" >/dev/null 2>&1; then
+            echo "$tag already exists; no release required."
+            exit 0
+          fi
+          git config user.name "flowfield-release-bot"
+          git config user.email "release-bot@flowfield.inc"
+          git tag -a "$tag" -m "HRG Flowfield $tag"
+          git push origin "$tag"
+          scripts/package-release.sh "$version" "$RUNNER_TEMP/dist" >"$RUNNER_TEMP/dist/SHA256SUMS"
+          gh release create "$tag" "$RUNNER_TEMP/dist/hrg-flowfield-v$version.plugin" "$RUNNER_TEMP/dist/hrg-flowfield-v$version.zip" "$RUNNER_TEMP/dist/SHA256SUMS" \
+            --title "HRG Flowfield $tag" \
+            --notes "Automated release from the canonical flowfieldai/flowfield plugin source."

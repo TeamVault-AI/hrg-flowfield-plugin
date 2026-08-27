@@ -20,13 +20,13 @@ case "$*" in
       printf '%s\n' '[]'
     fi
     ;;
-  "plugin marketplace add TeamVault-AI/hrg-flowfield-plugin --scope user")
+  "plugin marketplace add flowfieldai/hrg-flowfield-plugin --scope user")
     : >"$STATE_DIR/marketplace"
     ;;
   "plugin marketplace update flowfield-hrg") : ;;
   "plugin list --json")
     if [ -f "$STATE_DIR/plugin" ]; then
-      printf '%s\n' '[{"id":"hrg-flowfield@flowfield-hrg","version":"0.1.1","scope":"user","enabled":true}]'
+      printf '%s\n' '[{"id":"hrg-flowfield@flowfield-hrg","version":"0.1.2","scope":"user","enabled":true}]'
     else
       printf '%s\n' '[]'
     fi
@@ -57,7 +57,7 @@ STUB
 chmod +x "$TEST_ROOT/claude-stub"
 
 CLAUDE_STUB_STATE="$TEST_ROOT" CLAUDE_BIN="$TEST_ROOT/claude-stub" FLOWFIELD_INSTALLER_SKIP_OAUTH=1 sh "$REPO_ROOT/install-claude-code.sh" >/dev/null
-grep -Fq 'plugin marketplace add TeamVault-AI/hrg-flowfield-plugin --scope user' "$TEST_ROOT/calls.log"
+grep -Fq 'plugin marketplace add flowfieldai/hrg-flowfield-plugin --scope user' "$TEST_ROOT/calls.log"
 grep -Fq 'plugin install hrg-flowfield@flowfield-hrg --scope user' "$TEST_ROOT/calls.log"
 
 : >"$TEST_ROOT/calls.log"

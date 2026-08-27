@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.2
+
+- Made the private `flowfieldai/flowfield` monorepo and its
+  `flowfield-internal` marketplace the canonical source.
+- Moved the credential-free public distribution repository to
+  `flowfieldai/hrg-flowfield-plugin`.
+- Added automatic canonical-to-public mirroring and public release packaging.
+
 ## 0.1.1
 
 - Verified the GitHub marketplace update path through a merged release pull
