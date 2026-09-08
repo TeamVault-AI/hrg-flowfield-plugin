@@ -85,17 +85,24 @@ authenticated actor and effective policy. Do not infer that such sessions exist.
 
 ## Freshness and newest records
 
-Always call `get_source_status` for freshness, sync cutoffs, latest available dates,
-or whether a source has live records. Optionally provide `sources`. Never label
-a top-ranked result as the newest record. Never interpret a dated base release
-name as a corpus cutoff or infer no live overlay from an empty search.
+For freshness or whether a source is up to date, call `get_source_status` without
+`include_details`. Present one table: Source | Status | Last checked | Last content
+update. Use the server's explicit `status` and `status_message`.
 
-Report last successful poll, last content admission, newest accessible provider
-dates, date completeness, and retrieval verification separately. Preserve unknown
-or failed statuses. Provider record creation/event dates differ from polling and
-ingestion times. An older record date after a successful no-change poll does not
-prove stalled synchronization. Counts and dates cover authorized indexed records,
-not provider-wide completeness or colleagues' private records.
+`healthy` means a recent successful source check, no pending updates, and no
+failed read verification. Keep QuickBooks, JobTread, and any other unchanged
+healthy source in the same healthy group. Never create a "quiet but not failing"
+category from older document dates or missing historical update timestamps.
 
-If `retrieval_verification.status` is `fail`, report the failure and request an
-operational investigation; do not explain it away as normal permissions.
+`last_checked_at` is the successful connector check time. `last_content_update_at`
+is the last observed content admission; display a missing value as "Not recorded",
+not "Never synced". An unchanged source can be fully up to date. Report `delayed`,
+`syncing`, `needs_attention`, and `unknown` as returned. A failed read check remains
+an access/retrieval issue even when synchronization is current.
+
+Use `include_details: true` only for diagnostic questions about document dates,
+counts, or errors. Provider event dates, including scheduled future meetings, are
+not freshness timestamps. Teams and m365 can be historical search categories;
+`not_monitored` does not mean a broken live connector. Omit those categories from
+live connector health totals. Status describes the monitored indexed pipeline,
+not independent proof of provider-wide completeness.
