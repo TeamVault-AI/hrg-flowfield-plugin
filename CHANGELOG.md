@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.4
+
+- Advertise the complete search/read/exact-search tool suite.
+- Guide source/date filtering, exhaustive pagination and identity-safe testing.
+- Preserve the existing authenticated endpoint and plugin identifiers.
+
 ## 0.1.3
 
 - Emit portable release checksums using asset filenames rather than CI-runner

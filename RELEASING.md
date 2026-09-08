@@ -23,15 +23,15 @@ direct push to either repository as the release mechanism.
    ```
 
 5. Open and merge the canonical pull request.
-6. The canonical publish workflow validates and mirrors the plugin to the
+6. The canonical publish workflow validates and opens a version-bump pull request in the
    public repository using the encrypted repository secret
    `HRG_FLOWFIELD_PLUGIN_PUBLISH_TOKEN`. Rotate that credential without
    changing plugin source when its GitHub authorization changes.
-7. The public mirror workflow creates tag `v<version>` plus `.plugin`, `.zip`,
+7. Review and merge the generated public version-bump PR; direct pushes are not permitted. The public mirror workflow creates tag `v<version>` plus `.plugin`, `.zip`,
    and checksum release assets when that version does not already exist.
 8. In Claude, update the `flowfield-hrg` marketplace and then update HRG
    Flowfield. Begin a new session and verify that the connector still exposes
-   exactly `hybrid_search` and `read_document`.
+   `hybrid_search`, `read_document`, and `search_text`.
 
 Server-side retrieval, identity, ACL, OAuth, and MCP behavior should be shipped
 on `hrg.flowfield.inc`; those changes do not require a plugin version bump.
