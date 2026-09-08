@@ -7,10 +7,11 @@ customer data, passwords, tokens, or shared credentials. Each HRG user signs in
 with Microsoft, and Flowfield applies that person's canonical identity and
 source permissions on the server.
 
-The connector intentionally exposes exactly two read-only tools:
+The connector intentionally exposes three read-only tools:
 
 - `hybrid_search`
 - `read_document`
+- `search_text` (literal/regex search with exhaustive pagination)
 
 ## Install in Claude Desktop, Cowork, or Chat
 
@@ -30,7 +31,7 @@ installed by default, or required.
 Run:
 
 ```bash
-curl --proto '=https' --tlsv1.2 -fsS https://raw.githubusercontent.com/flowfieldai/hrg-flowfield-plugin/v0.1.3/install-claude-code.sh | sh
+curl --proto '=https' --tlsv1.2 -fsS https://raw.githubusercontent.com/flowfieldai/hrg-flowfield-plugin/v0.1.4/install-claude-code.sh | sh
 ```
 
 Then start a new Claude Code session or run `/reload-plugins`.
@@ -39,7 +40,7 @@ Then start a new Claude Code session or run `/reload-plugins`.
 
 Ask Claude:
 
-> Use HRG Flowfield to search for Honey Rock Group information, read the most relevant result, and confirm that the connector exposes only hybrid_search and read_document.
+> Use HRG Flowfield to search for Honey Rock Group information, read the most relevant result, and confirm that the connector exposes hybrid_search, read_document, and search_text.
 
 ## Updates
 
@@ -59,6 +60,6 @@ Cleves marketplace.
 - The package contains no secrets or customer content.
 - Microsoft handles account authentication; the plugin never receives a user
   password.
-- Both connector operations are read-only.
+- All connector operations are read-only.
 
 Copyright Flowfield. All rights reserved.

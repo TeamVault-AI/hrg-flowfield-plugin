@@ -25,11 +25,10 @@ registry, cache, or OAuth token storage directly.
    Let Claude open the Flowfield authorization page. The user must choose and
    approve their Honey Rock Group Microsoft account. Never request their
    password, hard-code an authorization URL, or paste a token into chat.
-5. Verify that the connector advertises exactly `hybrid_search` and
-   `read_document`. Treat any additional HRG tools as a stale or incorrect
+5. Verify that the connector advertises `hybrid_search`, `read_document`, and `search_text`. Treat any additional HRG tools as a stale or incorrect
    connector configuration.
-6. Run one harmless HRG search and read one returned document. Do not report
-   setup complete until both calls succeed under the signed-in identity.
+6. Run one harmless HRG search, read one returned document, and find a literal phrase from that document with `search_text`. Do not report
+   setup complete until all three calls succeed under the signed-in identity.
 
 ## Claude Desktop, Cowork, and Chat
 
@@ -40,6 +39,6 @@ by an HRG Claude administrator.
 
 ## Completion report
 
-Report the plugin version, enabled state, connector state, the exact two tools
+Report the plugin version, enabled state, connector state, the three tools
 advertised, and whether the harmless search/read test passed. Do not expose
 tokens, internal identity claims, or source content merely to prove setup.
