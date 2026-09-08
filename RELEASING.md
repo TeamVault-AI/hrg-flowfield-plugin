@@ -31,7 +31,7 @@ direct push to either repository as the release mechanism.
    and checksum release assets when that version does not already exist.
 8. In Claude, update the `flowfield-hrg` marketplace and then update HRG
    Flowfield. Begin a new session and verify that the connector still exposes
-   `hybrid_search`, `read_document`, and `search_text`.
+   `hybrid_search`, `read_document`, `search_text`, and `get_source_status`.
 
 Server-side retrieval, identity, ACL, OAuth, and MCP behavior should be shipped
 on `hrg.flowfield.inc`; those changes do not require a plugin version bump.
