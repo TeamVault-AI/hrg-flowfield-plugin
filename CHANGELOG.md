@@ -1,3 +1,7 @@
+# 0.1.12
+
+- Add optional per-call plugin-version guidance for Desktop connections that omit transport headers. Audit records distinguish tool arguments from headers; absent versions remain unknown.
+
 # Changelog
 
 ## 0.1.11

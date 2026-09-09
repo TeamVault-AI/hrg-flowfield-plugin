@@ -4,7 +4,7 @@
       "type": "http",
       "url": "https://hrg.flowfield.inc/mcp",
       "headers": {
-        "X-Flowfield-Plugin-Version": "0.1.11"
+        "X-Flowfield-Plugin-Version": "0.1.12"
       }
     }
   }
