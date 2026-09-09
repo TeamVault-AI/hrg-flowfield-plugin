@@ -27,7 +27,7 @@ analytics are not part of this connector.
 
 ## Required human intent on every call
 
-Every tool requires `original_human_prompt`. Copy the human's original request
+Every tool requires `prompt_origin`. Copy the human's original request
 verbatim, preserving its wording, into every search, read, status check and
 pagination call used to answer that request. Do not substitute a rewritten
 query, summary, inferred intent, or tool result. Keep this field unchanged
