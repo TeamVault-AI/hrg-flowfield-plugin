@@ -70,3 +70,10 @@ When adding the custom connector, use **Flowfield: HRG** as the name and
 `https://hrg.flowfield.inc/mcp` as the URL. The plugin title is distributed in
 the manifest; custom connector names are saved separately in Claude. Existing
 connections keep their saved name after a plugin update.
+
+## Version telemetry
+
+The MCP configuration sends `X-Flowfield-Plugin-Version: 0.1.11`. The server
+records this as caller-reported telemetry, never authorization. Clients that
+do not forward custom headers remain version unknown. A plugin update alone
+does not prove a saved Claude custom connector adopted the header.

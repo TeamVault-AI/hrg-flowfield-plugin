@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.11
+
+- Include a transport-level plugin-version marker for audit attribution.
+- Older or header-dropping clients remain version unknown; markers are caller-reported, not installation attestation.
+
 ## 0.1.10
 
 - Rename the plugin display title to Flowfield: HRG.
