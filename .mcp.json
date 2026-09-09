@@ -2,10 +2,7 @@
   "mcpServers": {
     "hrg-flowfield": {
       "type": "http",
-      "url": "https://hrg.flowfield.inc/mcp",
-      "headers": {
-        "X-Flowfield-Plugin-Version": "0.1.12"
-      }
+      "url": "https://hrg.flowfield.inc/mcp"
     }
   }
 }

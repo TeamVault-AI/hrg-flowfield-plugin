@@ -1,3 +1,9 @@
+# 0.1.13
+
+- Remove the custom version header that Claude rejects during connector setup.
+- Remove skill-driven version reporting; retain the stable URL and normal OAuth.
+- Document removal of the header row for users with cached older setup defaults.
+
 # 0.1.12
 
 - Add optional per-call plugin-version guidance for Desktop connections that omit transport headers. Audit records distinguish tool arguments from headers; absent versions remain unknown.
