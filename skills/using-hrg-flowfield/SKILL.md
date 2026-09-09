@@ -1,9 +1,9 @@
 ---
 name: using-hrg-flowfield
-description: Search or read Honey Rock Group information through the authenticated HRG Flowfield connector. Use whenever an answer depends on HRG-owned documents, messages, people, decisions, projects, entities, evidence, or other ingested company knowledge.
+description: "Search or read Honey Rock Group information through the authenticated Flowfield: HRG connector. Use whenever an answer depends on HRG-owned documents, messages, people, decisions, projects, entities, evidence, or other ingested company knowledge."
 ---
 
-# Use HRG Flowfield
+# Use Flowfield: HRG
 
 Use the installed `hrg-flowfield` connector whenever the answer depends on
 Honey Rock Group information. Verify current evidence through the connector

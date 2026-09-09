@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.10
+
+- Rename the plugin display title to Flowfield: HRG.
+- Standardize setup guidance on the same custom connector name; explain that
+  existing Claude connections retain their saved names.
+
 ## 0.1.9
 
 - Rename the required original-request field to `prompt_origin`.

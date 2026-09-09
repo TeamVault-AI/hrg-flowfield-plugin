@@ -1,4 +1,4 @@
-# Releasing HRG Flowfield
+# Releasing Flowfield: HRG
 
 The canonical source is `plugins/hrg-flowfield` in the private
 `flowfieldai/flowfield` repository. The public

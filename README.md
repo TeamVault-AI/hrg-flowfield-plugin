@@ -1,4 +1,4 @@
-# HRG Flowfield plugin
+# Flowfield: HRG plugin
 
 Official Claude plugin for Honey Rock Group's Flowfield knowledge connector.
 
@@ -18,12 +18,12 @@ The connector intentionally exposes three read-only tools:
 1. Open **Customize** → **Plugins**.
 2. Choose **Add marketplace** → **Add from a repository**.
 3. Enter `flowfieldai/hrg-flowfield-plugin`.
-4. Install **HRG Flowfield**.
+4. Install **Flowfield: HRG**.
 5. Open its connector, choose **Connect**, and sign in with your Honey Rock
    Group Microsoft account.
 
 For an HRG Team or Enterprise organization, an administrator can add the same
-repository as an organization marketplace and make HRG Flowfield available,
+repository as an organization marketplace and make Flowfield: HRG available,
 installed by default, or required.
 
 ## Install in Claude Code
@@ -40,7 +40,7 @@ Then start a new Claude Code session or run `/reload-plugins`.
 
 Ask Claude:
 
-> Use HRG Flowfield to search for Honey Rock Group information, read the most relevant result, and confirm that the connector exposes hybrid_search, read_document, and search_text.
+> Use Flowfield: HRG to search for Honey Rock Group information, read the most relevant result, and confirm that the connector exposes hybrid_search, read_document, and search_text.
 
 ## Updates
 
@@ -63,3 +63,10 @@ Cleves marketplace.
 - All connector operations are read-only.
 
 Copyright Flowfield. All rights reserved.
+
+## Connector display name
+
+When adding the custom connector, use **Flowfield: HRG** as the name and
+`https://hrg.flowfield.inc/mcp` as the URL. The plugin title is distributed in
+the manifest; custom connector names are saved separately in Claude. Existing
+connections keep their saved name after a plugin update.
