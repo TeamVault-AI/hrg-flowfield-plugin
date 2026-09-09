@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.9
+
+- Rename the required original-request field to `prompt_origin`.
+
 ## 0.1.8
 
 - Require the original human request verbatim on every MCP tool call for intent evaluation.
