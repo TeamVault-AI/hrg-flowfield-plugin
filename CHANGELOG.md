@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.8
+
+- Require the original human request verbatim on every MCP tool call for intent evaluation.
+- Clarify repeated calls, scheduled instructions, and unavailable prompt handling.
+
 ## 0.1.4
 
 - Advertise the complete search/read/exact-search tool suite.
