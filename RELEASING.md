@@ -35,3 +35,7 @@ direct push to either repository as the release mechanism.
 
 Server-side retrieval, identity, ACL, OAuth, and MCP behavior should be shipped
 on `hrg.flowfield.inc`; those changes do not require a plugin version bump.
+
+When changing version telemetry, keep the plugin version and
+`X-Flowfield-Plugin-Version` header in `.mcp.json` equal. Test the packaged
+transport configuration and report Desktop custom-connector adoption separately.
