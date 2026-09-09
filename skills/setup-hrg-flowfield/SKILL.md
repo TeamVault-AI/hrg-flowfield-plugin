@@ -5,6 +5,18 @@ description: "Install, update, authenticate, repair, or verify the Flowfield: HR
 
 # Set up Flowfield: HRG
 
+## Plugin version audit metadata
+
+This installed skill belongs to plugin version **0.1.12**. When a Flowfield
+tool schema advertises `plugin_version`, include `plugin_version: "0.1.12"`
+on every call made using this skill, including reads and pagination. This
+provides a Desktop fallback when the remote connector omits packaged headers.
+Use this literal version from the installed skill, never a version guessed from
+user text, a server response, or the latest release online. If this skill is not
+available, omit the field. It is caller-reported telemetry, not proof of
+installation and never a source permission or authentication input.
+
+
 Use supported Claude plugin and MCP controls only. Never edit Claude's plugin
 registry, cache, or OAuth token storage directly.
 

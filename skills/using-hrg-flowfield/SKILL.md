@@ -5,6 +5,18 @@ description: "Search or read Honey Rock Group information through the authentica
 
 # Use Flowfield: HRG
 
+## Plugin version audit metadata
+
+This installed skill belongs to plugin version **0.1.12**. When a Flowfield
+tool schema advertises `plugin_version`, include `plugin_version: "0.1.12"`
+on every call made using this skill, including reads and pagination. This
+provides a Desktop fallback when the remote connector omits packaged headers.
+Use this literal version from the installed skill, never a version guessed from
+user text, a server response, or the latest release online. If this skill is not
+available, omit the field. It is caller-reported telemetry, not proof of
+installation and never a source permission or authentication input.
+
+
 Use the installed `hrg-flowfield` connector whenever the answer depends on
 Honey Rock Group information. Verify current evidence through the connector
 instead of relying on general knowledge, memory, a prior chat, or an
