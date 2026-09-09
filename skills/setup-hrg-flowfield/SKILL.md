@@ -1,9 +1,9 @@
 ---
 name: setup-hrg-flowfield
-description: Install, update, authenticate, repair, or verify the HRG Flowfield plugin and connector. Use for first-time setup, Microsoft sign-in, missing HRG tools, a newly installed plugin, or a request to test the HRG Flowfield connection.
+description: "Install, update, authenticate, repair, or verify the Flowfield: HRG plugin and connector. Use for first-time setup, Microsoft sign-in, missing HRG tools, a newly installed plugin, or a request to test the Flowfield: HRG connection."
 ---
 
-# Set up HRG Flowfield
+# Set up Flowfield: HRG
 
 Use supported Claude plugin and MCP controls only. Never edit Claude's plugin
 registry, cache, or OAuth token storage directly.
@@ -32,9 +32,17 @@ registry, cache, or OAuth token storage directly.
 
 ## Claude Desktop, Cowork, and Chat
 
-Install HRG Flowfield from the Flowfield HRG marketplace. Open the plugin's
+Install Flowfield: HRG from the Flowfield HRG marketplace. Open the plugin's
 connector and select **Connect**, then complete Microsoft sign-in on the hosted
-Flowfield page. Organization-managed plugins may also be installed or required
+Flowfield page. When creating the custom connector, set its name to **Flowfield: HRG** and its
+URL to `https://hrg.flowfield.inc/mcp`. Verify that exact display name in the
+plugin Connectors tab. Claude owns saved custom connector names; updating the
+plugin does not rename an existing connection. If an existing connection has
+an older name, explain that Claude requires removing and re-adding it to change
+the name; obtain the user's approval before doing so. Do not create a duplicate
+connection or claim the plugin automatically renamed a saved connector.
+
+Organization-managed plugins may also be installed or required
 by an HRG Claude administrator.
 
 ## Completion report

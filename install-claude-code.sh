@@ -12,13 +12,13 @@ say() {
 }
 
 fail() {
-  printf 'HRG Flowfield installer: %s\n' "$*" >&2
+  printf 'Flowfield: HRG installer: %s\n' "$*" >&2
   exit 1
 }
 
 command -v "$CLAUDE_BIN" >/dev/null 2>&1 || fail "Claude Code is not installed or is not on PATH. Install it from https://claude.com/download and retry."
 
-say "HRG Flowfield: using $($CLAUDE_BIN --version)"
+say "Flowfield: HRG: using $($CLAUDE_BIN --version)"
 
 marketplaces="$($CLAUDE_BIN plugin marketplace list --json)"
 if printf '%s\n' "$marketplaces" | grep -Eq '"name"[[:space:]]*:[[:space:]]*"flowfield-hrg"'; then
@@ -31,10 +31,10 @@ fi
 
 installed="$($CLAUDE_BIN plugin list --json)"
 if printf '%s\n' "$installed" | grep -Eq '"id"[[:space:]]*:[[:space:]]*"hrg-flowfield@flowfield-hrg"'; then
-  say "Updating the HRG Flowfield plugin..."
+  say "Updating the Flowfield: HRG plugin..."
   "$CLAUDE_BIN" plugin update "$PLUGIN_ID" --scope user
 else
-  say "Installing the HRG Flowfield plugin for this user..."
+  say "Installing the Flowfield: HRG plugin for this user..."
   "$CLAUDE_BIN" plugin install "$PLUGIN_ID" --scope user
 fi
 
@@ -58,6 +58,6 @@ if [ "${FLOWFIELD_INSTALLER_SKIP_OAUTH:-0}" != "1" ] && printf '%s\n' "$connecto
 fi
 
 say ""
-say "HRG Flowfield installation completed."
+say "Flowfield: HRG installation completed."
 say "If Claude Code is already open, run /reload-plugins. Otherwise start a new session."
 say "Then ask an HRG question or run /hrg-flowfield:setup-hrg-flowfield to verify setup."
