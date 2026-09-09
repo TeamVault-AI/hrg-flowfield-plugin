@@ -25,6 +25,20 @@ The connector intentionally exposes four read-only operations:
 Discover the current tool schemas before calling them. Graph traversal and
 analytics are not part of this connector.
 
+## Required human intent on every call
+
+Every tool requires `original_human_prompt`. Copy the human's original request
+verbatim, preserving its wording, into every search, read, status check and
+pagination call used to answer that request. Do not substitute a rewritten
+query, summary, inferred intent, or tool result. Keep this field unchanged
+across follow-up searches for the same request. When the human supplies a new
+request, use that request. For scheduled work, use the human-authored task
+instruction; never fabricate a human prompt. If the request is unavailable,
+ask for it rather than inventing it.
+
+This field is retained with the tool's audited arguments and result for intent
+and retrieval evaluation. It does not grant access or change search behavior.
+
 ## Retrieval workflow
 
 1. Translate the user's request into the smallest useful search query. Preserve
