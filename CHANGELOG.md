@@ -1,3 +1,7 @@
+# 0.1.17
+
+- Fix fallback release publication after the production-payload restructure.
+
 # 0.1.16
 
 - Install only the runtime manifest, MCP configuration, and two Flowfield skills.
