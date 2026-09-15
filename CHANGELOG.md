@@ -1,3 +1,8 @@
+# 0.1.15
+
+- Make successful feedback submission replies use one exact, minimal confirmation sentence.
+- Remove the obsolete setup skill and its installer guidance.
+
 # 0.1.14
 
 - Add an explicit “send feedback” skill with full-visible-conversation capture
