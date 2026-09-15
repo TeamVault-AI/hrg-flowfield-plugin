@@ -10,7 +10,9 @@ Honey Rock Group information. Verify current evidence through the connector
 instead of relying on general knowledge, memory, a prior chat, or an
 unattributed summary.
 
-The connector intentionally exposes four read-only operations:
+The connector exposes read-only retrieval, reading, discovery, and status
+operations. A separate `submit_feedback` operation creates feedback only after
+an explicit user request; use the `send-flowfield-feedback` skill for it.
 
 - `hybrid_search` finds relevant ACL-filtered evidence across the HRG corpus.
 - `read_document` reads a specific result using the document identifier or
@@ -62,8 +64,9 @@ for a bearer token, password, or shared credential. Never claim that a missing
 result exists but is hidden; say only that it was not present in the evidence
 available to the signed-in user.
 
-The connector is read-only. Do not imply that these operations can edit,
-delete, send, approve, or mutate HRG source data.
+The retrieval operations are read-only. Do not imply that they can edit,
+delete, send, approve, or mutate HRG source data. `submit_feedback` creates a
+restricted Flowfield feedback record and does not mutate HRG source systems.
 
 ## Source and date filters
 
