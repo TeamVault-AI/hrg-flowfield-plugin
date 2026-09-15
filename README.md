@@ -7,11 +7,15 @@ customer data, passwords, tokens, or shared credentials. Each HRG user signs in
 with Microsoft, and Flowfield applies that person's canonical identity and
 source permissions on the server.
 
-The connector intentionally exposes three read-only tools:
+The connector exposes read-only retrieval and status tools, plus one explicit
+feedback-write tool:
 
 - `hybrid_search`
 - `read_document`
-- `search_text` (literal/regex search with exhaustive pagination)
+- `search_text` and `full_scan` (literal/regex search)
+- `list_records` and `get_search_facets`
+- `get_source_status`
+- `submit_feedback` (creates a restricted Flowfield feedback record only)
 
 ## Install in Claude Desktop, Cowork, or Chat
 
@@ -31,7 +35,7 @@ installed by default, or required.
 Run:
 
 ```bash
-curl --proto '=https' --tlsv1.2 -fsS https://raw.githubusercontent.com/flowfieldai/hrg-flowfield-plugin/v0.1.4/install-claude-code.sh | sh
+curl --proto '=https' --tlsv1.2 -fsS https://raw.githubusercontent.com/flowfieldai/hrg-flowfield-plugin/v0.1.14/install-claude-code.sh | sh
 ```
 
 Then start a new Claude Code session or run `/reload-plugins`.
@@ -40,7 +44,7 @@ Then start a new Claude Code session or run `/reload-plugins`.
 
 Ask Claude:
 
-> Use Flowfield: HRG to search for Honey Rock Group information, read the most relevant result, and confirm that the connector exposes hybrid_search, read_document, and search_text.
+> Use Flowfield: HRG to search for Honey Rock Group information, read the most relevant result, and show the available tools.
 
 ## Updates
 
@@ -60,7 +64,9 @@ Cleves marketplace.
 - The package contains no secrets or customer content.
 - Microsoft handles account authentication; the plugin never receives a user
   password.
-- All connector operations are read-only.
+- Retrieval, reading, status, and discovery operations are read-only.
+- `submit_feedback` writes one restricted feedback record after the user
+  explicitly asks to send feedback. It cannot edit HRG source systems.
 
 Copyright Flowfield. All rights reserved.
 

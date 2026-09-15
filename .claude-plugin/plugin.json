@@ -2,8 +2,8 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "hrg-flowfield",
   "displayName": "Flowfield: HRG",
-  "version": "0.1.13",
-  "description": "Search and read Honey Rock Group knowledge through the authenticated Flowfield connector.",
+  "version": "0.1.14",
+  "description": "Search and read Honey Rock Group knowledge, and send conversation feedback to Flowfield.",
   "author": {
     "name": "Flowfield"
   },
@@ -14,5 +14,6 @@
     "flowfield",
     "knowledge",
     "search"
+    ,"feedback"
   ]
 }

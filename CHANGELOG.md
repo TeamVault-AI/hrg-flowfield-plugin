@@ -1,3 +1,12 @@
+# 0.1.14
+
+- Add an explicit “send feedback” skill with full-visible-conversation capture
+  by default and an optional user note.
+- Add the `submit_feedback` connector tool, which writes one restricted
+  feedback record and returns a receipt without changing HRG source systems.
+- Disclose incomplete client context instead of claiming unavailable turns were
+  captured verbatim.
+
 # 0.1.13
 
 - Remove the custom version header that Claude rejects during connector setup.
