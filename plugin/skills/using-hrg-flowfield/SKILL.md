@@ -17,10 +17,14 @@ an explicit user request; use the `send-flowfield-feedback` skill for it.
 - `hybrid_search` finds relevant ACL-filtered evidence across the HRG corpus.
 - `read_document` reads a specific result using the document identifier or
   locator returned by search.
-
 - `search_text` finds literal or Rust-regex matches in authorized retained text.
-  Use it for grep, exact phrases, and exhaustive searches.
-
+  Use it for focused grep and exact-phrase searches.
+- `full_scan` exhaustively matches one or more literal or Rust-regex patterns
+  and returns a stable materialized result handle with coverage information.
+- `list_records` enumerates the complete authorized record set under source,
+  mailbox, date, record-type, attachment, and metadata filters.
+- `get_search_facets` discovers valid sources, mailbox scopes, record types,
+  fields, and other filter values before constructing a query.
 - `get_source_status` reports authoritative polling, content admission, and newest
   accessible record dates under the signed-in identity.
 
@@ -82,16 +86,24 @@ Date-only bounds use whole UTC days; timestamps require Z or an offset.
 not dates merely mentioned in the text; records with unknown dates are excluded
 when bounded. Filters narrow existing access and never grant permission.
 
-## Exact and exhaustive search
+## Exact search, exhaustive scans, and inventories
 
-Call `search_text` with `pattern` and `mode: "literal"` or `mode: "regex"`.
-Use `document_ids` to limit a scan to returned documents when appropriate.
-Rust regex supports flags but not lookaround or backreferences. Continue with
-`cursor: next_cursor`, keeping all other arguments unchanged, until
-`scan_complete` is true. If the snapshot or authorization changes, restart the
-scan with no cursor. Report unresolved source segments or incomplete scans.
-A completed scan covers authorized retained text, not every file at the provider.
-A top-ranked search returning nothing is not an exhaustive absence check.
+Use `search_text` for a focused literal or regex search. Use `full_scan` when
+the request asks for every match, an absence check, or multiple exact/regex
+patterns over a complete filtered population. Use `list_records` when the task
+requires a complete inventory even when records have no searchable text. Call
+`get_search_facets` first when a mailbox, attachment type, field, or other
+filter value is unknown.
+
+Rust regex supports flags but not lookaround or backreferences. Continue any
+paginated operation with its returned cursor or materialized-result handle,
+keeping the query and filters unchanged, until the response reports complete
+coverage. If the snapshot or authorization changes, restart without the old
+cursor. Report unresolved source segments, unextractable records, or incomplete
+coverage. A completed text scan covers authorized retained text; a complete
+record inventory can also identify authorized records whose contents are not
+searchable. A top-ranked search returning nothing is not an exhaustive absence
+check.
 
 ## Identity and testing
 

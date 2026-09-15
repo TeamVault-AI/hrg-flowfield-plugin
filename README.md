@@ -35,7 +35,7 @@ installed by default, or required.
 Run:
 
 ```bash
-curl --proto '=https' --tlsv1.2 -fsS https://raw.githubusercontent.com/flowfieldai/hrg-flowfield-plugin/v0.1.15/install-claude-code.sh | sh
+curl --proto '=https' --tlsv1.2 -fsS https://raw.githubusercontent.com/flowfieldai/hrg-flowfield-plugin/v0.1.16/install-claude-code.sh | sh
 ```
 
 Then start a new Claude Code session or run `/reload-plugins`.
@@ -84,3 +84,10 @@ No custom headers are required. If an older plugin populated an
 row with its × button before adding the connector. Keep the name
 **Flowfield: HRG**, URL `https://hrg.flowfield.inc/mcp`, and normal OAuth sign-in.
 Version telemetry is optional on the server and is not required to connect.
+
+## Package contents
+
+The marketplace installs only `plugin/`, which contains the plugin manifest,
+the authenticated MCP endpoint, and the two Flowfield skills. Tests, CI,
+release tooling, installer code, and repository documentation remain outside
+the installed plugin directory.

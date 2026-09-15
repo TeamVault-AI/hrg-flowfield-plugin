@@ -1,7 +1,7 @@
 name: Validate Claude plugin
 
 permissions:
-  contents: write
+  contents: read
 
 on:
   pull_request:
@@ -14,28 +14,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - name: Validate JSON and synchronized versions
         run: |
-          jq -e . .claude-plugin/plugin.json .claude-plugin/marketplace.json .mcp.json >/dev/null
-          plugin_version="$(jq -r '.version' .claude-plugin/plugin.json)"
+          jq -e . plugin/.claude-plugin/plugin.json .claude-plugin/marketplace.json plugin/.mcp.json >/dev/null
+          plugin_version="$(jq -r '.version' plugin/.claude-plugin/plugin.json)"
           marketplace_version="$(jq -r '.plugins[] | select(.name == "hrg-flowfield") | .version' .claude-plugin/marketplace.json)"
           test "$plugin_version" = "$marketplace_version"
+          test "$(jq -r '.plugins[] | select(.name == "hrg-flowfield") | .source' .claude-plugin/marketplace.json)" = "./plugin"
       - name: Test installer
         run: sh tests/test-install-claude-code.sh
       - name: Test release packaging
         run: |
-          version="$(jq -r '.version' .claude-plugin/plugin.json)"
-          mkdir -p "$RUNNER_TEMP/dist"
-          scripts/package-release.sh "$version" "$RUNNER_TEMP/dist" >"$RUNNER_TEMP/dist/SHA256SUMS"
-          cd "$RUNNER_TEMP/dist"
-          shasum -a 256 -c SHA256SUMS
+          sh tests/test-package-release.sh
       - name: Publish versioned fallback release
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         env:
           GH_TOKEN: ${{ secrets.HRG_FLOWFIELD_PLUGIN_PUBLISH_TOKEN }}
         run: |
           test -n "$GH_TOKEN"
-          version="$(jq -r '.version' .claude-plugin/plugin.json)"
+          gh auth setup-git
+          version="$(jq -r '.version' plugin/.claude-plugin/plugin.json)"
           tag="v$version"
           if git ls-remote --exit-code --tags origin "refs/tags/$tag" >/dev/null 2>&1; then
             echo "$tag already exists; no release required."
