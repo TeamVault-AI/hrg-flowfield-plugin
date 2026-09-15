@@ -12,14 +12,15 @@ direct push to either repository as the release mechanism.
 1. Create a release branch.
 2. Make the plugin or skill change.
 3. Bump the same semantic version in both:
-   - `.claude-plugin/plugin.json`
+   - `plugin/.claude-plugin/plugin.json`
    - `.claude-plugin/marketplace.json`
 4. Run:
 
    ```bash
-   jq -e . .claude-plugin/plugin.json .claude-plugin/marketplace.json .mcp.json
+   jq -e . plugin/.claude-plugin/plugin.json .claude-plugin/marketplace.json plugin/.mcp.json
    sh tests/test-install-claude-code.sh
-   claude plugin validate .
+   sh tests/test-package-release.sh
+   claude plugin validate plugin
    ```
 
 5. Open and merge the canonical pull request.

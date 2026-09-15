@@ -1,3 +1,10 @@
+# 0.1.16
+
+- Install only the runtime manifest, MCP configuration, and two Flowfield skills.
+- Keep tests, CI, release tooling, the installer, and repository documentation outside the installed plugin directory.
+- Package releases from an explicit runtime allowlist and validate the exact archive inventory.
+- Document the complete discovery, ranked-search, exhaustive-scan, listing, reading, status, and feedback tool surface.
+
 # 0.1.15
 
 - Make successful feedback submission replies use one exact, minimal confirmation sentence.
