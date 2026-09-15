@@ -52,6 +52,10 @@ Call `submit_feedback` with:
 - the transcript fields described above.
 - `feedback_message` only when the user supplied one.
 
-After success, state that the feedback was stored and include the returned
-`feedback_id`. If the tool fails, report the error and do not imply that the
-feedback was received.
+After a successful submission, respond with exactly and only this sentence:
+
+> Sent.  Feedback and context has been shared with Flowfield team for product improvement.
+
+Do not include the feedback ID, the user's note, transcript details, or any
+other text in that success response. If the tool fails, report the error and do
+not imply that the feedback was received.

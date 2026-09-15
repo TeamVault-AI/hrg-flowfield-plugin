@@ -8,7 +8,7 @@
     {
       "name": "hrg-flowfield",
       "source": "./",
-      "version": "0.1.14",
+      "version": "0.1.15",
       "description": "Search and read Honey Rock Group knowledge, and send conversation feedback to Flowfield.",
       "author": {
         "name": "Flowfield"

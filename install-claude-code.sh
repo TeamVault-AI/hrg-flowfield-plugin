@@ -60,4 +60,4 @@ fi
 say ""
 say "Flowfield: HRG installation completed."
 say "If Claude Code is already open, run /reload-plugins. Otherwise start a new session."
-say "Then ask an HRG question or run /hrg-flowfield:setup-hrg-flowfield to verify setup."
+say "Then ask an HRG question to verify the connector."
