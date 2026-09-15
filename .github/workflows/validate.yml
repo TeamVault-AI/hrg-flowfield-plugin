@@ -45,7 +45,7 @@ jobs:
           git config user.email "release-bot@flowfield.inc"
           git tag -a "$tag" -m "HRG Flowfield $tag"
           git push origin "$tag"
-          scripts/package-release.sh "$version" "$RUNNER_TEMP/dist" >"$RUNNER_TEMP/dist/SHA256SUMS"
-          gh release create "$tag" "$RUNNER_TEMP/dist/hrg-flowfield-v$version.plugin" "$RUNNER_TEMP/dist/hrg-flowfield-v$version.zip" "$RUNNER_TEMP/dist/SHA256SUMS" \
+          scripts/package-release.sh "$version" "$RUNNER_TEMP/dist" >"$RUNNER_TEMP/SHA256SUMS"
+          gh release create "$tag" "$RUNNER_TEMP/dist/hrg-flowfield-v$version.plugin" "$RUNNER_TEMP/dist/hrg-flowfield-v$version.zip" "$RUNNER_TEMP/SHA256SUMS" \
             --title "HRG Flowfield $tag" \
             --notes "Automated release from the canonical flowfieldai/flowfield plugin source."

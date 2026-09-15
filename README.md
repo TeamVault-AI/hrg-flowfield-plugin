@@ -35,7 +35,7 @@ installed by default, or required.
 Run:
 
 ```bash
-curl --proto '=https' --tlsv1.2 -fsS https://raw.githubusercontent.com/flowfieldai/hrg-flowfield-plugin/v0.1.16/install-claude-code.sh | sh
+curl --proto '=https' --tlsv1.2 -fsS https://raw.githubusercontent.com/flowfieldai/hrg-flowfield-plugin/v0.1.17/install-claude-code.sh | sh
 ```
 
 Then start a new Claude Code session or run `/reload-plugins`.
